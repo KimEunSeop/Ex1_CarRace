@@ -22,10 +22,6 @@ public class Car {
     }
 
     public void go (){
-        Random random = new Random();
-        int var = random.nextInt(10);
-        if (var >= 4) {
-            state++;
-        }
+        state++;
     }
 }
