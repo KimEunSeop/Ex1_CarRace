@@ -16,16 +16,24 @@ public class Race {
         System.out.println("실행 결과");
         IntStream.range(0, rounds)  // 0부터 rounds-1까지의 스트림 생성
                 .forEach(i -> runRound());  // 각 반복마다 runRound() 실행
-
         findWinners();
     }
 
     private void runRound() {
         carList.forEach(car -> {
-            car.go();
+            if(checkToGo()) car.go();
             drawRace(car);
         });
         System.out.println();
+    }
+
+    private boolean checkToGo(){
+        Random random = new Random();
+        int var = random.nextInt(10);
+        if (var >= 4) {
+            return true;
+        }
+        return false;
     }
 
     private void drawRace(Car car) {
