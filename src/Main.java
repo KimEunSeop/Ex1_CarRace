@@ -7,7 +7,6 @@ public class Main {
 
         playService.start();
 
-        playService.playRound();
 
     }
 }
