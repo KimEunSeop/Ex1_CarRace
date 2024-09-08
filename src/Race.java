@@ -1,57 +1,58 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Race {
     private int rounds;
-    private CarManager carManager;
+    private List<Car> carList = new ArrayList<>();
 
-    public Race(int rounds, CarManager carManager) {
+    public Race(int rounds, List<Car> carList) {
         this.rounds = rounds;
-        this.carManager = carManager;
+        this.carList = carList;
     }
 
-    public void playRound() {
+    public void play(){
         System.out.println("실행 결과");
-        Random random = new Random();
-        List<Car> cars = carManager.getCars();
+        IntStream.range(0, rounds)  // 0부터 rounds-1까지의 스트림 생성
+                .forEach(i -> runRound());  // 각 반복마다 runRound() 실행
 
-        for (int i = 0; i < rounds; i++) {
-            for (Car car : cars) {
-                int var = random.nextInt(10);
-                if (var >= 4) {
-                    car.go();
-                }
-                System.out.print(car.getName() + " : ");
-                for (int j = 0; j < car.getState(); j++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
-
-        List<String> winners = findWinners();
-        System.out.print("최종 우승자 : ");
-        System.out.println(String.join(", ", winners));
+        findWinners();
     }
 
-    private List<String> findWinners() {
+    private void runRound() {
+        carList.forEach(car -> {
+            car.go();
+            drawRace(car);
+        });
+        System.out.println();
+    }
+
+    private void drawRace(Car car) {
+        System.out.print(car.getName() + " : ");
+        IntStream.range(0, car.getState())
+                .forEach(i -> System.out.print("-"));
+
+        System.out.println();
+    }
+
+    private void findWinners() {
         int maxDistance = 0;
         List<String> winners = new ArrayList<>();
-        List<Car> cars = carManager.getCars();
 
-        for (Car car : cars) {
+        for (Car car : carList) {
             int distance = car.getState();
             if (distance > maxDistance) {
                 maxDistance = distance;
                 winners.clear();
                 winners.add(car.getName());
-            } else if (distance == maxDistance) {
+                continue;
+            }
+            if (distance == maxDistance) {
                 winners.add(car.getName());
             }
         }
-
-        return winners;
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
     }
 }

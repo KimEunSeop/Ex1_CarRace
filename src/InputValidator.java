@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class InputCheck {
+public class InputValidator {
     public void checkCarNames(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
@@ -9,8 +9,8 @@ public class InputCheck {
         }
     }
 
-    public void checkNumberOfAttempts(int n) {
-        if (n <= 1) {
+    public void checkNumberOfAttempts(int attempts) {
+        if (attempts<= 1) {
             throw new IllegalArgumentException("시도할 횟수는 1보다 큰 숫자여야 합니다.");
         }
     }
