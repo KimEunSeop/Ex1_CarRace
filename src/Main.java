@@ -6,7 +6,5 @@ public class Main {
         PlayServiceImpl playService = new PlayServiceImpl();
 
         playService.start();
-
-
     }
 }
