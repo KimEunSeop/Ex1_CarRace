@@ -19,7 +19,7 @@ public class PlayServiceImpl implements PlayService {
         InputData inputData = getInputData();
         createCars(inputData.getCarNames());
         int attempts = inputData.getAttempts();
-        playRound(attempts);
+        playRace(attempts);
     }
 
     private InputData getInputData() {
@@ -56,7 +56,7 @@ public class PlayServiceImpl implements PlayService {
     }
 
     @Override
-    public void playRound(int attempts) { // 경주 시작
+    public void playRace(int attempts) { // 경주 시작
         Race race = new Race(attempts, carList);
         race.play();
     }
