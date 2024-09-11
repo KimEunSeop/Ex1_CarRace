@@ -2,8 +2,8 @@ import java.util.List;
 
 public class InputValidator {
 
-    static final int MAX_CAR_NAME = 5;
-    static final int MIN_ATTEMPTS = 1;
+    private static final int MAX_CAR_NAME = 5;
+    private static final int MIN_ATTEMPTS = 1;
     public void checkCarNames(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > MAX_CAR_NAME) {

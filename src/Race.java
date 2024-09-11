@@ -3,7 +3,7 @@ import java.util.stream.IntStream;
 
 public class Race {
 
-    static final int condition = 4;
+    private static final int CONDITION = 4;
     private final int rounds;
     private final List<Car> carList;
     private final GenerateRandomInt randomInt = new GenerateRandomInt();
@@ -23,7 +23,7 @@ public class Race {
 
     private void runRound() {
         carList.forEach(car -> {
-            if (randomInt.generateNumber() >= condition) { // 주사위 굴리기
+            if (randomInt.generateNumber() >= CONDITION) { // 주사위 굴리기
                 car.go();
             }
             drawRace(car);
