@@ -6,6 +6,7 @@ public class Main {
 
         Race race = new Race(inputData.getAttempts(), carManager.getCarList());
         race.play();
+
     }
 
 }
