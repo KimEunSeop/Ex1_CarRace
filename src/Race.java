@@ -6,7 +6,7 @@ public class Race {
     private static final int CONDITION = 4;
     private final int rounds;
     private final List<Car> carList;
-    private final RandomNumberGenerator randomInt = new RandomNumberGenerator();
+
     private final WinnerFinder winnerFinder = new WinnerFinder();
 
     public Race(int rounds, List<Car> carList) {
@@ -23,7 +23,7 @@ public class Race {
 
     private void runRound() {
         carList.forEach(car -> {
-            if (randomInt.generateRandomInt() >= CONDITION) { // 주사위 굴리기
+            if (RandomNumberGenerator.generateRandomInt() >= CONDITION) { // 주사위 굴리기
                 car.go();
             }
             drawRace(car);
