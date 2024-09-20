@@ -11,6 +11,7 @@ public class RandomNumberGenerator {
     }
 
     public static int generateRandomInt() {
+
         return random.nextInt(MAX_NUM);
     }
 }
