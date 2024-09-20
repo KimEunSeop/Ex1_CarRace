@@ -6,6 +6,7 @@ public class Race {
     private static final int CONDITION = 4;
     private final int rounds;
     private final List<Car> carList;
+
     private final WinnerFinder winnerFinder = new WinnerFinder();
 
     public Race(int rounds, List<Car> carList) {
